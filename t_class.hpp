@@ -3,6 +3,8 @@
 #ifndef T_CLASS
 #define T_CLASS
 #include <string>
+#include <cstdlib>
+#include <cstring>
 
 class tClass {
 public:
@@ -18,6 +20,7 @@ public:
 
     tClass(std::string _string) : rstring(_string) {};
 
+    int print_mb(const char *ptr);
 
     int rint;
     double rdouble;

@@ -8,7 +8,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\a.exe"
             ],
             "options": {
                 "cwd": "C:\\Qt\\Tools\\mingw810_64\\bin"

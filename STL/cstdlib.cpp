@@ -16,6 +16,8 @@ IN C++
 
 #include <iostream>
 #include <cstdlib>
+#include <clocale>
+#include <ctime>
 #include "../t_class.hpp" /* Class for tests*/
 
 /*
@@ -26,11 +28,11 @@ IN C++
     stilled from cppreference
 */
 int comparePredForBSearch(const void *ap, const void *bp){
-    const int *a = (int *) ap;
-    const int *b = (int *) bp;
-    if(*a < *b){
+    int a = *static_cast<const int*> (ap);
+    int b = *static_cast<const int*> (bp);
+    if(a < b){
         return -1;
-    }else if(*a > *b){
+    }else if(a > b){
         return 1;
     }else{
         return 0;
@@ -62,10 +64,10 @@ int main (){
 
     
     /*Search number in sorted array */
-    int arr[5] = {1,2,3,4,5};
-    int sizearr = sizeof(arr)/sizeof(arr[0]);
-    int key = 3;//search number
-    int *p1 = (int *) std::bsearch(&key, arr , sizearr , sizeof(arr[0]) , comparePredForBSearch);
+    int arr[8] = {5,3,31,6,28,12,-7,0};
+    constexpr int sizearr = sizeof(arr)/sizeof(arr[0]);
+    // int key = 3;//search number
+    // int *p1 = (int *) std::bsearch(&key, arr , sizearr , sizeof(arr[0]) , comparePredForBSearch);
     //std::cout<< *p1 <<"\n";
 
     div_t divres;
@@ -82,13 +84,24 @@ int main (){
     // std::cout<< aval << '\n';
 
     /* returns the number of bytes that are contained in the multibyte character  */
-    const char *lstr = "lenght";
-    int lenght = std::mblen(lstr, 7);
-    // std::cout<< lenght << '\n';
+    const char *lstr = u8"z\u00df\u6c34\U0001d10b";; // wchar_t
+    // int lenght = std::mblen(lstr, std::strlen(lstr));
+    //std::cout<< lenght << '\n';
 
     /* std::mbstowcs */
+    //std::setlocale(LC_ALL, "en_US.utf8");
+    //tobj.print_mb(wbstr);
+    
+    /* rand , srand */
+    // std::srand(std::time(0)); // use current time
+    // int rdn = std::rand();
+    // std::cout<< rdn;
 
-
+    /* std::qsort */
+    std::qsort(arr, sizearr, sizeof *arr, comparePredForBSearch);
+    for( int elem: arr){
+        std::cout<< elem <<"\n";
+    }
     //std::exit(EXIT_SUCCESS);
 
     return 0;
