@@ -5,7 +5,7 @@
 
 class IClass{
 public:
-    virtual ~IClass() {};
+    ~IClass() {};
     virtual void printName() = 0;
 };
 
@@ -25,31 +25,27 @@ public:
 
 class CreatorObjects{
 public:
-    virtual ~CreatorObjects() {};
-    virtual IClass * createObject() = 0;
+    ~CreatorObjects() {};
+    static std::shared_ptr<IClass> createObject();
     
 };
 
 class CreatorClass_1 : CreatorObjects{
 public:
-    IClass* createObject() {
-        return new Class_1();
+    static std::shared_ptr<IClass> createObject() {
+        return std::shared_ptr<Class_1>(new Class_1);
     }
 };
 
 class CreatorClass_2 : CreatorObjects{
 public:
-    IClass* createObject() {
-        return new Class_2();
+    static std::shared_ptr<IClass> createObject() {
+        return std::shared_ptr<Class_2>(new Class_2);
     }
 };
 
-
 int main() {
-    IClass* cls;
-    
-    CreatorClass_2 *class_1 = new CreatorClass_2;
-    cls = class_1->createObject();
+    std::shared_ptr<IClass> cls = CreatorClass_2::createObject();
     cls->printName();
     return 0;
 }
