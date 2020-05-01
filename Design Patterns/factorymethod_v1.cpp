@@ -26,20 +26,20 @@ public:
 class CreatorObjects{
 public:
     ~CreatorObjects() {};
-    static std::shared_ptr<IClass> createObject();
+    static const std::shared_ptr<IClass> createObject();
     
 };
 
 class CreatorClass_1 : CreatorObjects{
 public:
-    static std::shared_ptr<IClass> createObject() {
+    static const std::shared_ptr<IClass> createObject() {
         return std::shared_ptr<Class_1>(new Class_1);
     }
 };
 
 class CreatorClass_2 : CreatorObjects{
 public:
-    static std::shared_ptr<IClass> createObject() {
+    static const std::shared_ptr<IClass> createObject() {
         return std::shared_ptr<Class_2>(new Class_2);
     }
 };
