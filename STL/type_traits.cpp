@@ -80,12 +80,14 @@ int main()
 
     auto arrdimention = std::rank_v<decltype(*arr)>;
     auto arrsize = std::extent_v<decltype(arr)>;
-    
+
     /* measure of dimentions array */
     std::cout << arrdimention << '\n';
     
     /* measure for numbers in array */
     std::cout << arrsize << '\n';
 
+    /* std::is_same compare type T1 with T2 
+    if T1 == T2 return true otherwise return false */
     return 0;
 }
