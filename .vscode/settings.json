@@ -39,6 +39,13 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "clocale": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "csetjmp": "cpp",
+        "cstdarg": "cpp",
+        "functional": "cpp",
+        "list": "cpp",
+        "typeindex": "cpp",
+        "unordered_map": "cpp",
+        "xhash": "cpp"
     }
 }
