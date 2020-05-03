@@ -4,7 +4,7 @@
 int add_nums(int count, ...) 
 {
     int result = 0;
-    /* all args ... wrapped std::va_list */
+    /* all args ... captured std::va_list */
     std::va_list args;
 
     /* transfer in va_start numbers of args */
