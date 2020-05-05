@@ -14,6 +14,11 @@ class someClass {
     someClass(someClass&&);
     virtual void somefunc() = 0;
 };
+
+class someClassSec : public someClass {
+    void somefunc() {};
+};
+
 /* and more more checks
  is_fundamental, is_object, is_class, is_union etc. */
 template< typename T >
@@ -36,6 +41,24 @@ T checkingForIntegral(T value){
     return check;
 }
 
+template<typename T>
+typename std::enable_if_t<std::is_floating_point_v<T>, T> foo1(T t){
+    std::cout << "type is float, ok \n";
+    return t;
+}
+
+template<typename T, typename ... Ts>
+std::enable_if_t<std::conjunction_v<std::is_same<T, Ts>...>>
+func(T, Ts ...){
+    std::cout << "All packs Ts... are type T \n";
+}
+
+template<typename T, typename ... Ts>
+std::enable_if_t<!std::conjunction_v<std::is_same<T, Ts>...>>
+func(T, Ts ...){
+    std::cout << "All packs Ts... are not a type T \n";
+}
+
 int main()
 {
     int arr[5]={};
@@ -52,11 +75,13 @@ int main()
     std::cout << "array is integral type? "<< check << '\n';
     std::cout << "en is enum? " << std::is_enum<en>::value << "\n\n";
 
-    /* For all examples below - all structs included c++17 variant with _v prefix
+    /* For all examples below - all structs included c++17 variant with _v prefix or _t
      Example: C++11: std::is_nothrow_move_constructible<someStruct>::value;
      C++17: std::is_nothrow_move_constructible_v<someStruct>;
      C++11: std::alignment_of<double>() or std::alignment_of<double>::value;
-     C++17: std::alignment_of_v<double>; */
+     C++17: std::alignment_of_v<double>; 
+     C++11: std::enable<true, int>::type;
+     C++17: std::enable_t<true, int>;*/
 
     /* check some structs or classes for constructibility / trivial constructibility */
     std::cout << "someStruct is default constructible? "<< std::is_default_constructible<someStruct>::value << '\n';
@@ -85,9 +110,26 @@ int main()
     std::cout << arrdimention << '\n';
     
     /* measure for numbers in array */
-    std::cout << arrsize << '\n';
+    std::cout << arrsize << '\n' << "\n";
 
     /* std::is_same compare type T1 with T2 
     if T1 == T2 return true otherwise return false */
+    std::cout << std::is_same_v<int,int> << '\n';
+    std::cout << std::is_same_v<someClass, someStruct> << '\n';
+
+    /* check inheritance check is it T1 ancestor of T2 
+    std::is_base_of_v<T1, T2>; */
+    std::cout << std::is_base_of_v<someClass, someClassSec> << '\n' << "\n";
+
+    /* check is layot compatibility type */
+   //std::cout << std::is_layout_compatible_v<someClass, someStruct>;
+   
+   /* Test std::enable_if_t */
+    foo1(1.2);
+
+    /* Test std::conjunction_t */
+    func(1,2,3);
+    func(1,3,"hello");
+    
     return 0;
 }
