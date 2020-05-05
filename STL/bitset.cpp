@@ -55,5 +55,9 @@ int main()
     unsigned long b1l = b1.to_ulong();
     std::cout << numstr << '\n';
     std::cout << b1l << '\n';
+
+    /* hash function for bitset */    
+    std::hash<std::bitset<b1.size()>> f;
+    std::cout << f(b1) << '\n';
     return 0;
 }
