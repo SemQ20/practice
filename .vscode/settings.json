@@ -46,6 +46,7 @@
         "list": "cpp",
         "typeindex": "cpp",
         "unordered_map": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "bitset": "cpp"
     }
 }
