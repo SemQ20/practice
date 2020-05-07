@@ -1,2 +1,2 @@
 echo off
-g++ cstdlib.cpp ../t_class.cpp
+g++ -std=c++17 cstdlib.cpp ../t_class.cpp

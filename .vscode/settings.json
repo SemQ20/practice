@@ -47,6 +47,8 @@
         "typeindex": "cpp",
         "unordered_map": "cpp",
         "xhash": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "algorithm": "cpp",
+        "iterator": "cpp"
     }
 }
