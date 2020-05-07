@@ -207,6 +207,7 @@ int main()
     /* Algorithms in <functional> for uses another algorithms in STL */
     /* std::default_searcher */
     auto strit = std::search(text.begin(),text.end(),std::default_searcher(sstr.begin(), sstr.end()));
+    /* return of index string container: */
     std::cout << strit - text.begin()  << '\n';
 
     /* std::boyer_moore_searcher */
@@ -216,5 +217,12 @@ int main()
     /* std::boyer_moore_horspool_searcher */
     strit = std::search(text.begin(),text.end(),std::boyer_moore_horspool_searcher(sstr.begin(), sstr.end()));
     std::cout << strit - text.begin()  << '\n';
+
+    /* Use serching iterator */
+    for(std::string::iterator it = text.begin(); it < strit; it++){
+        std::cout << *it;
+    }
+    std::cout << '\n';
+    
     return 0;
 }
