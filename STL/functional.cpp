@@ -32,7 +32,7 @@ void _func(const int& val){
 }
 
 void _ffunc(){
-    std::cout << "Call std::invoke without atgs" << '\n';
+    std::cout << "Call std::invoke without args" << '\n';
 }
 
 int main()
