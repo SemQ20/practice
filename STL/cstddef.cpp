@@ -7,7 +7,6 @@ after C++11:
 #include <cstddef>
 #include <array>
 
-
 struct SClass{
     int zero = 0;
     double sdouble;
@@ -37,5 +36,6 @@ int main()
 
     /* std::max_align_t */
     std::cout << alignof(std::max_align_t);
+    
     return 0;
 }
