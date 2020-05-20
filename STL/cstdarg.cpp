@@ -1,6 +1,7 @@
 #include <cstdarg>
 #include <iostream>
 
+
 int add_nums(int count, ...) 
 {
     int result = 0;
@@ -17,9 +18,11 @@ int add_nums(int count, ...)
     va_end(args);
     return result;
 }
- 
+
+
 int main() 
-{
+{    
     
     std::cout << add_nums(4, 25, 25, 50, 50) << '\n';
+    return 0;
 }

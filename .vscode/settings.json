@@ -49,6 +49,13 @@
         "xhash": "cpp",
         "bitset": "cpp",
         "algorithm": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "array": "cpp",
+        "iomanip": "cpp",
+        "thread": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
     }
 }
