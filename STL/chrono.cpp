@@ -66,6 +66,5 @@ int main()
     timer_ms = t2 - t1 */
     std::cout << _tp_sec <<" ns" << '\n';
     std::cout << timep_sec << " sec" << '\n';
-
     return 0;
 }
