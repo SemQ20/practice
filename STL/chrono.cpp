@@ -1,4 +1,8 @@
 #include <iostream>
+/* increaced 3 clocks:
+std::chrono::system_clock 
+std::chrono::steady_clock
+std::chrono::high_resolution_clock */
 #include <chrono>
 #include <thread>
 #include <ratio>
