@@ -41,7 +41,7 @@ int comparePredForBSearch(const void *ap, const void *bp){
 
 int main (){
 
-    tClass tobj("134.234");
+    TClass tobj("134.234");
     tobj.rchar = tobj.rstring.c_str();
 
     /*return double number from const char *
