@@ -71,6 +71,7 @@
         "fstream": "cpp",
         "ranges": "cpp",
         "sstream": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "any": "cpp"
     }
 }
