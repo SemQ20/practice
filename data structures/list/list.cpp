@@ -16,12 +16,12 @@ public:
 	void clear();
 	T& operator[](const int index);
 private:
-	template<typename T>
+	template<typename U>
 	class Node{
 	public:
 		Node *next;
-		T data;
-		Node(T data = T(), Node *next = nullptr)
+		U data;
+		Node(U data = U(), Node *next = nullptr)
 		{
 			this->data = data;
 			this->next = next;
@@ -225,11 +225,11 @@ int main()
 	lst.insert(100, 1);
 	lst.removeValue(3);
 	for (int i = 0; i != lst.size(); ++i) {
-		std::cout << lst[i]<<std::endl;
+		std::cout << lst[i] << '\n';
 	}
-	std::cout <<"list size:"<< lst.size()<<std::endl;
+	std::cout <<"list size:"<< lst.size() << '\n';
 	lst.clear();
-	std::cout << "list size:" <<lst.size();
+	std::cout << "list size:" << lst.size() << '\n';
 	return 0;
 }
 
