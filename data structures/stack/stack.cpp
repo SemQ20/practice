@@ -14,13 +14,13 @@ public:
 	bool empty();
 	T& top();
 private:
-	template<typename T>
+	template<typename U>
 	class Node {
 	public:
-		T data;
+		U data;
 		Node *next;
-		Node(T data) : data(data){}
-		Node(T data, Node *node) : data(data), next(node){}
+		Node(U data) : data(data){}
+		Node(U data, Node *node) : data(data), next(node){}
 	};
 	Node<T> *_top;
 	int _size;
@@ -92,8 +92,10 @@ int main()
 {
 	Stack<int> stack;
 	stack.push(10);
-	std::cout << stack.size() << std::endl;
-	std::cout << clock() / 1000.0 << "sec" << std::endl;
+	int itop = stack.top();
+	std::cout << stack.size() << '\n';
+	std::cout << itop << '\n';
+	std::cout << clock() / 1000.0 << "sec" << '\n';
 	return 0;
 }
 
