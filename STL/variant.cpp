@@ -1,5 +1,5 @@
-#include <variant>
 #include <iostream>
+#include <variant>
 #include <complex>
 #include <utility>
 #include <string>
@@ -14,19 +14,17 @@ int main()
     std::variant<int, float> v, w;
     v = 12;
     w = 3.5f;
-
     std::cout << "size of v: "<< std::variant_size_v<decltype(v)> << '\n';
-
     /* return value in union space */
     int i = std::get<int>(v);
     float fval = std::get<float>(w);
-
+    
     std::cout << "i = "<< i << ", ";
     std::cout <<"fval = "<< fval << '\n';
     /* return position of std::variant<T... types> value{} in union space */
     std::cout << v.index() << ", "; 
     std::cout << w.index() << '\n';
-
+    
     w = std::get<int>(v);
     w = std::get<0>(v); // same effect as the previous line
     w = v; // same effect as the previous line

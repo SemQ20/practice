@@ -5,8 +5,8 @@
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
-            "cppStandard": "gnu++20",
-            "intelliSenseMode": "clang-x64"
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "${default}"
         }
     ],
     "version": 4
