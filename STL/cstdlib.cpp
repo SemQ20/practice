@@ -80,7 +80,7 @@ int main (){
     //std::cout<< path << "\n";
     
     /* std::abs return a absolute value */
-    int aval = std::abs(-3);
+    int32_t aval = std::abs(-3);
     // std::cout<< aval << '\n';
 
     /* returns the number of bytes that are contained in the multibyte character  */

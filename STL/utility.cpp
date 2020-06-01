@@ -80,8 +80,8 @@ int main()
     /* std::forward */
     /* Forwards lvalues as either lvalues or as rvalues */
     /* Need for implementing type template constructor */
-    int lval = 30;
-    int rval = 0;
+    int32_t lval = 30;
+    int32_t rval = 0;
     rval = go(lval); // OK, call lval, return lval, used move semantic
     rval = go(500); // OK, overload function for rval , return rval, used move semantic
 
