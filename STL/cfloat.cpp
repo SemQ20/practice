@@ -27,6 +27,7 @@ int main()
     std::cout << "maximum value for positive number long double type: " << LDBL_MAX << '\n';
     std::cout << "minimum value for positive number long double type: " << LDBL_MIN << '\n';
 
+    std::cout << "type round for floating - point numbers" << FLT_ROUNDS << '\n';
 
     return 0;
 }
