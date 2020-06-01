@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cassert>
 
 int main()
 {
@@ -88,6 +89,9 @@ int main()
 
     std::cout << "std::numeric_limits<T>::lowest(): " << '\n' << "int: " << std::numeric_limits<decltype(ival)>::lowest() << '\n';
     std::cout << "lowest: " << std::numeric_limits<decltype(fpoint)>::lowest() << '\n';
+
+    assert(ival - 5 == 4);
+    static_assert(sizeof(int) == 4);
 
     return 0;
 }
