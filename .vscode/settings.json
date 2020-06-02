@@ -74,6 +74,7 @@
         "stop_token": "cpp",
         "any": "cpp",
         "variant": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "cerrno": "cpp"
     }
 }

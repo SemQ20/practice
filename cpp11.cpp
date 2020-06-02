@@ -3,6 +3,7 @@
 #include <cstring>
 #include <utility>
 #include <vector>
+#include <cassert>
 
 /* 6. move constructors / move assignment */
 class SomeClass{
@@ -12,6 +13,17 @@ public:
     /* Copy constructor */
     SomeClass(const SomeClass &sc);
 };
+
+/* 29. static assertion */
+template<typename T>
+void swap (T &a, T &b){
+    static_assert(std::is_copy_constructible_v<T>,"Swap requires copying");
+    static_assert(std::is_nothrow_copy_constructible_v<T> && std::is_nothrow_copy_assignable_v<T>
+    , "Swap requires nothrow copy/assign");
+    auto c = a;
+    a = b;
+    b = c;
+}
 
 /* 16. Variadic templates */
 /* 8. constexpr and literal types */
@@ -73,5 +85,12 @@ int main()
     /* 12. nullptr */
     std::cout << "nullptr: " << std::is_null_pointer<decltype(nullptr) >::value << '\n';
 
+    /* 28. range for */
+    for(auto &elem : numbers2){
+        std::cout << elem << '\n';
+    }
+
+    int a,b;
+    swap(a,b);
     return 0;
 }
