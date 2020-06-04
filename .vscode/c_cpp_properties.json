@@ -3,9 +3,9 @@
         {
             "name": "Linux",
             "defines": [],
-            "compilerPath": "/usr/bin/gcc",
+            "compilerPath": "/usr/bin/g++-10", 
             "cStandard": "c11",
-            "cppStandard": "gnu++17",
+            "cppStandard": "gnu++20",
             "intelliSenseMode": "${default}"
         }
     ],

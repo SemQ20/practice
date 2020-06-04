@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <string> // std::basic_string<>
 
+
 int main()
 {
     std::string str = "Something else";
