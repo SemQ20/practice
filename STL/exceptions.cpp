@@ -28,14 +28,14 @@ Exceptions classes:
 #include <cstring> // for std::strerror
 /* <cerrno> contain errno macro implementation, which 
  accepts in parameter once of values(macroses) like 
- E2BIG - argument too big,
- EACCES - permission denied 
+ * E2BIG - argument too big,
+ * EACCES - permission denied 
  e. t. c.*/
 #include <cerrno> // macro implementation for system errors
 #include <cmath> // for math functions
 
 /* User defined exception class, 
-maybe need public inherited of STL exceptions */
+ maybe need public inherited of STL exceptions */
 class MyExc{
 public:
     MyExc(const char* err_str, int line) : err_code(err_str), err_line(line){};
