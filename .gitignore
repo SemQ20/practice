@@ -2,3 +2,4 @@
 *.out
 *.s
 *.o
+*_test.cpp
