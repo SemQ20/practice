@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++.exe build active file",
+            "label": "Windows",
             "command": "C:\\Qt\\Tools\\mingw810_64\\bin\\g++.exe",
             "args": [
                 "-g",
@@ -17,6 +17,24 @@
             "options": {
                 "cwd": "C:\\Qt\\Tools\\mingw810_64\\bin"
             }
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: gcc build active file",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
         }
     ],
     "version": "2.0.0"

@@ -75,6 +75,8 @@
         "any": "cpp",
         "variant": "cpp",
         "complex": "cpp",
-        "cerrno": "cpp"
+        "cerrno": "cpp",
+        "coroutine": "cpp",
+        "cinttypes": "cpp"
     }
 }
