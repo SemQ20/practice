@@ -1,6 +1,6 @@
 #include "nAlgorithms.hpp"
 
-std::pair<std::vector<int>, int> sieveEratosphene(int number){
+/* std::pair<std::vector<int>, int> sieveEratosphene(int number){
     std::vector<int> wholeNumbers;
     unsigned int countNumbers;
     if(number == 1){return std::make_pair(wholeNumbers,countNumbers);}
@@ -11,9 +11,32 @@ std::pair<std::vector<int>, int> sieveEratosphene(int number){
         }
     }
     return std::make_pair(wholeNumbers,countNumbers);
+} */
+std::pair<std::vector<int>, int> sieveEratosphene(int number){
+    std::vector<int> wholeNumbers = fillVector_2_to_n(wholeNumbers,number);
+    unsigned int countNumbers{1}; // 2 - start index and 2 in vector
+    int m = 0;
+    for(auto it = wholeNumbers.begin(); it != wholeNumbers.end();){
+        int fval = ((*it)*(*it)) + m;
+        int res = fval - m;
+        if(std::find(wholeNumbers.begin(),wholeNumbers.end(),fval) < std::end(wholeNumbers)){
+            wholeNumbers.erase(std::find(wholeNumbers.begin(),wholeNumbers.end(),fval));
+            m += (*it)*countNumbers;
+        }else{
+           if(res > number){
+                continue;
+            }
+            //else{
+                ++it;
+                m = 0;
+                ++countNumbers;
+           // }
+        }
+    }
+    return std::make_pair(wholeNumbers,countNumbers);
 }
 
-bool check_isWholeNumber(unsigned int value){
+bool check_isWholeNumber(int value){
     if(value == 1){
         return false;
     }
@@ -80,4 +103,11 @@ std::pair<std::vector<int> , int> factorization(int number){
         }
     }
     return std::make_pair(multipliers,mcount);
+}
+
+std::vector<int> fillVector_2_to_n(std::vector<int> vector, int number){
+    for(int i = 2; i <= number; i++){
+        vector.push_back(i);
+    }
+    return vector;
 }
