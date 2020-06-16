@@ -1,8 +1,8 @@
 #include "nAlgorithms.hpp"
 
-/* std::pair<std::vector<int>, int> sieveEratosphene(int number){
+std::pair<std::vector<int>, int> sieveEratosphene(int number){
     std::vector<int> wholeNumbers;
-    unsigned int countNumbers;
+    unsigned int countNumbers{0};
     if(number == 1){return std::make_pair(wholeNumbers,countNumbers);}
     for(int i = 2; i <= number; ++i){
         if(check_isWholeNumber(i)){
@@ -11,26 +11,29 @@
         }
     }
     return std::make_pair(wholeNumbers,countNumbers);
-} */
-std::pair<std::vector<int>, int> sieveEratosphene(int number){
-    std::vector<int> wholeNumbers = fillVector_2_to_n(wholeNumbers,number);
+}
+
+std::pair<std::vector<int>, int> sieveEratosphene_v1(int number){
+    std::vector<int>::iterator vit;
+    std::vector<int> wholeNumbers; // initialization and fill vector in one line - bad idea !!!
+    wholeNumbers = fillVector_2_to_n(wholeNumbers,number);
     unsigned int countNumbers{1}; // 2 - start index and 2 in vector
     int m = 0;
-    for(auto it = wholeNumbers.begin(); it != wholeNumbers.end();){
-        int fval = ((*it)*(*it)) + m;
-        int res = fval - m;
-        if(std::find(wholeNumbers.begin(),wholeNumbers.end(),fval) < std::end(wholeNumbers)){
-            wholeNumbers.erase(std::find(wholeNumbers.begin(),wholeNumbers.end(),fval));
-            m += (*it)*countNumbers;
+    for(auto it = wholeNumbers.begin(); it != wholeNumbers.end()-1;){ // because end()++ == trash
+
+        int fval = ((*it)*(*it)) + m; // number for erase == current number^2 in array and plus offset
+
+        if(fval <= number){ 
+        if(vit = std::find(wholeNumbers.begin(),wholeNumbers.end(),fval);vit != wholeNumbers.end()){
+            wholeNumbers.erase(vit);
+        }
+        /* in original algorithm it's iteraror for this degree: for degree: 2 need to erase fval = 2^2 = 4, m += degree(2)
+        * fval + m = 6, m(2) += degree(2) == 4, fval + m = 8 e.t.c.*/
+            m += (*it);
         }else{
-           if(res > number){
-                continue;
-            }
-            //else{
                 ++it;
                 m = 0;
                 ++countNumbers;
-           // }
         }
     }
     return std::make_pair(wholeNumbers,countNumbers);

@@ -6,6 +6,7 @@
 #include <algorithm>
 
 std::pair<std::vector<int>, int> sieveEratosphene(int number);
+std::pair<std::vector<int>, int> sieveEratosphene_v1(int number);
 bool check_isWholeNumber(int value);
 int gcd(int a, int b);
 std::pair<std::vector<int> , int> factorization(int number);
