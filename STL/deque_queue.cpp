@@ -2,45 +2,23 @@
 #include <deque>
 #include <queue>
 
-template<class T>
-struct Test{
-    typedef void(T::*P)(void);
-
-    template<class U, P = &U::top>
-    struct True{char dummy[2];};
-
-    typedef char False;
-
-    static False detect(...);
-
-    template<class U>
-    static True<U> detect(U*);
-
-    static const bool exists = (sizeof(False) != sizeof(detect(static_cast<T*>(0))));
-};
-
-template<class T, bool check = Test<T>::exists>
-struct Print{};
-
-template<class T>
-struct Print<T,true>{
-    static void print_queue(const T& cont){
-        while(!cont.empty()){
-            std::cout << cont.top() << '\n';
-            cont.pop();
-        }
+template<typename Container>
+void print_queue(Container &q){
+    std::cout << "queue: " << '\n';
+    while(!q.empty()){
+        std::cout << q.front() << '\n';
+        q.pop();
     }
-};
+}
 
-template<class T>
-struct Print<T,false>{
-    static void print_queue(const T& cont){
-        while(!cont.empty()){
-            std::cout << cont.front() << '\n';
-            cont.pop();
-        }
+template<typename Container>
+void print_priority_queue(Container &q){
+    std::cout << "priority_queue: " << '\n';
+    while(!q.empty()){
+        std::cout << q.top() << '\n';
+        q.pop();
     }
-};
+}
 
 int main()
 {
@@ -92,12 +70,12 @@ int main()
         pq.push(n);
     }
     std::cout << "priority_queue:" << '\n';
-    print_queue(pq);
+    print_priority_queue(pq);
 
     for(auto &n : flst){
         fpq.push(n);
     }
-    print_queue(fpq);
+    print_priority_queue(fpq);
 
     return 0;
 }
