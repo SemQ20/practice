@@ -39,7 +39,7 @@ std::pair<std::vector<int>, int> sieveEratosphene_v1(int number){
     return std::make_pair(wholeNumbers,countNumbers);
 }
 
-bool check_isWholeNumber(int value){
+bool check_isWholeNumber(int const& value){
     if(value == 1){
         return false;
     }
@@ -59,7 +59,7 @@ bool check_isWholeNumber(int value){
     return true;
 }
 
-int gcd(int a, int b){
+int gcd(int& a, int& b){
     int c = 0;
     int cmp = 0;
     if(a%b == 0){
@@ -108,7 +108,7 @@ std::pair<std::vector<int> , int> factorization(int number){
     return std::make_pair(multipliers,mcount);
 }
 
-std::vector<int> fillVector_2_to_n(std::vector<int> vector, int number){
+std::vector<int> fillVector_2_to_n(std::vector<int>& vector, int number){
     for(int i = 2; i <= number; i++){
         vector.push_back(i);
     }

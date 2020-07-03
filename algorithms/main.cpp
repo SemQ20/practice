@@ -11,7 +11,7 @@ int main()
 {
     std::chrono::duration<uint64_t,std::nano> timer_ms; //variable for measuring runtime algorithm/programm
     auto t1 = std::chrono::high_resolution_clock::now();
-    auto[vec,val] = sieveEratosphene(40000);
+    auto[vec,val] = sieveEratosphene(20000);
     std::cout << "whole multipliers: "<< val << '\n';
     auto t2 = std::chrono::high_resolution_clock::now();
     timer_ms = t2-t1;

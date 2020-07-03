@@ -1,9 +1,10 @@
 #include <iostream>
 #include <deque>
 #include <queue>
+#include <type_traits>
 
 template<typename Container>
-void print_queue(Container &q){
+void print_queue(Container& q){
     std::cout << "queue: " << '\n';
     while(!q.empty()){
         std::cout << q.front() << '\n';
@@ -12,7 +13,7 @@ void print_queue(Container &q){
 }
 
 template<typename Container>
-void print_priority_queue(Container &q){
+void print_priority_queue(Container& q){
     std::cout << "priority_queue: " << '\n';
     while(!q.empty()){
         std::cout << q.top() << '\n';
