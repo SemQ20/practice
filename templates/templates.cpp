@@ -17,6 +17,8 @@ auto max_v1(T1 a, T2 b) -> typename std::decay_t<decltype(true? a : b)>
     return b < a ? a : b;
 }
 
+
+
 int main()
 {
     std::cout << _add(5, 7.4) << '\n';

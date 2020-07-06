@@ -78,6 +78,9 @@
         "cerrno": "cpp",
         "coroutine": "cpp",
         "cinttypes": "cpp",
-        "forward_list": "cpp"
+        "forward_list": "cpp",
+        "condition_variable": "cpp",
+        "future": "cpp",
+        "mutex": "cpp"
     }
 }
