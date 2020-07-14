@@ -3,7 +3,7 @@
         {
             "type": "shell",
             "label": "Windows",
-            "command": "C:\\Qt\\Tools\\mingw810_64\\bin\\g++.exe",
+            "command": "g++.exe build active file",
             "args": [
                 "-g",
                 "${file}",
@@ -12,7 +12,7 @@
                 "-Wall",
                 "-pedantic",
                 "-o",
-                "${fileDirname}\\a.exe"
+                "${workspaceFolder}\\algorithms\\a.exe"
             ],
             "options": {
                 "cwd": "C:\\Qt\\Tools\\mingw810_64\\bin"
