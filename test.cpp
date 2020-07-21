@@ -6,23 +6,42 @@
 #include <deque>
 #include <stddef.h>
 
+template<typename T>
+class Array
+{
+    T* data;
+public:
+    Array(Array<T> const&);
+    Array<T>& operator= (Array<T> const&);
+    T& operator[](std::size_t k){
+        return data[k];
+    }
+    std::size_t size = 0;
+};
+
 template<typename T, typename... Args>
-bool all_type_is_equal(Args... args){
+bool 
+all_type_is_equal(Args... args){
     return (std::is_same_v<T, Args>& ...);
 }
 
 template<typename T, typename... Args>
-bool all_type_is_equal(std::initializer_list<Args...> ilist){
+bool 
+all_type_is_equal(std::initializer_list<Args...> ilist){
     return (std::is_same_v<T, Args>& ...);
 }
 
 template<typename... Args>
-bool all_pack_is_fpoint(Args... args){
+bool 
+all_pack_is_fpoint(Args... args){
     return (all_type_is_equal<float>(args)& ...);
 }
 
 template<typename... Args>
-void push_back_void_deque(std::deque<void*>& deq, Args... args){
+void 
+push_back_void_deque(std::deque<void*>& deq, 
+                     Args... args){
+
     (deq.push_back(std::forward<Args>(args)), ...);
 }
 
@@ -38,7 +57,17 @@ struct A{
 };
 template<typename T> A(T) -> A<T>; // rule for template type output
 
-int main()
+template<typename T>
+void exchange(Array<T> *a, Array<T> *b){
+    T* p = &(*a)[0];
+    T* q = &(*b)[0];
+    for(std::size_t k = 0; k = a->size; k-- != 0){
+        exchange(p++, q++);
+    }
+}
+
+int 
+main()
 {
     std::deque<void*> deq;
 
@@ -71,7 +100,8 @@ int main()
 
     /* works only with agregate initialization: */
     A a = {42}; // this A<int> a; A<int>::val = 42; 
-    std::cout << "A val: "<< a.val << '\n';
+    std::cout << "A<T>::val: "<< a.val << '\n';
+
 
     return 0;
 }
