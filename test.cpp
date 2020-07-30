@@ -1,36 +1,55 @@
 #include <iostream>
 #include <type_traits>
-#include <atomic>
 #include <cstdlib>
 #include <string>
+#include <vector>
 
-template<typename T>
-void print_values(T value){
-    std::cout << "type: " << typeid(T).name() <<" and value: " << value << '\n';
-}
-
-template<typename Head, typename... Types>
-void f(Head&& h, Types&& ...ts){
-    print_values(h);
-    if constexpr(sizeof...(ts) != 0){
-        f(ts...);
-    }
-}
-
-struct Int{
-    Int(std::string &t_s) : ival(std::atoi(t_s.c_str())){}
-    int val() const {
-        return ival;
-    }
-    int ival;
+class Coord{
+    //TODO finalize
+    public:
+        Coord abs(){};
+        Coord& operator-(Coord const& o1){};
 };
+
+/* ************************* dynamic polymorphism ********************** */
+class GeoObj{
+    public:
+        virtual void draw() const = 0;
+        virtual Coord center_of_gravity() const = 0;
+        virtual ~GeoObj() = default;
+};
+
+class Circle : GeoObj{
+    public:
+        virtual void draw() const override;
+        virtual Coord center_of_gravity() const override;
+};
+
+class Line : GeoObj{
+    public:
+        virtual void draw() const override;
+        virtual Coord center_of_gravity() const override;
+};
+
+void myDraw(GeoObj const &go){
+    go.draw();
+}
+
+Coord distance(GeoObj const& t1, GeoObj const& t2){
+    Coord c = t1.center_of_gravity() - t2.center_of_gravity();
+    return c.abs();
+}
+
+/* void drawElems(std::vector<GeoObj*> const& vec){
+    for(std::size_t i = 0; i < vec.size() ++i){
+        vec[i]->draw();
+    }
+} */
+/* ******************************************************************* */
+
 
 int 
 main()
 {
-    std::string ival = "571";
-    Int i(ival);
-    std::cout << i.val() << '\n';
-    //f(1,3,4,5.4f,6.2,"hello");
     return 0;
 }

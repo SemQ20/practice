@@ -24,6 +24,14 @@ void print_base(Base *p){
     p->do_anything();
 }
 
+struct Int{
+    Int(std::string &t_s) : ival(std::atoi(t_s.c_str())){}
+    int val() const {
+        return ival;
+    }
+    int ival;
+};
+
 int main()
 {
     Derived dr;

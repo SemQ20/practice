@@ -75,6 +75,19 @@ class MyTuple : public Tuple<Types...>{
 
 };
 
+template<typename T>
+void print_values(T value){
+    std::cout << "type: " << typeid(T).name() <<" and value: " << value << '\n';
+}
+
+template<typename Head, typename... Types>
+void f(Head&& h, Types&& ...ts){
+    print_values(h);
+    if constexpr(sizeof...(ts) != 0){
+        f(ts...);
+    }
+}
+
 int main()
 {
     int x = 3;
