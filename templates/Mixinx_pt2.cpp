@@ -3,7 +3,7 @@
 #include <tuple>
 #include <string>
 #include <typeinfo>
-#include "../template.hpp"
+#include "template.hpp"
 
 //using TemplateTest::max_test;
 
