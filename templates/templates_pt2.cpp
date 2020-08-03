@@ -5,6 +5,7 @@
 #include <tuple>
 #include <deque>
 #include <stddef.h>
+#include <vector>
 
 template<typename T>
 class Array
@@ -65,6 +66,99 @@ void exchange(Array<T> *a, Array<T> *b){
         exchange(p++, q++);
     }
 }
+
+class Coord{
+    float const minusone = -1.0f;
+    public:
+        Coord(){}
+        Coord(float x, float y) : pointX(x), pointY(y){}
+        Coord(Coord const&){};
+        Coord& operator=(Coord const& o1);
+        const Coord operator-(Coord const& o1) const;
+        Coord abs();
+        float pointX;
+        float pointY;
+        ~Coord(){}
+};
+
+Coord& Coord::operator=(Coord const& obj){
+    pointX = obj.pointX;
+    pointY = obj.pointY;
+    return *this;
+}
+
+const Coord Coord::operator-(Coord const& o1) const{
+    return Coord(pointX - o1.pointX, pointY - o1.pointY);
+}
+
+Coord Coord::abs(){
+    if (pointX < 0 && pointY > 0){
+        pointX *= minusone, pointY;
+    }
+    if(pointX > 0 && pointY < 0){
+        pointX, pointY *= minusone;
+    }
+    if(pointX < 0 && pointY < 0){
+        pointX *= minusone, pointY;
+        pointX, pointY *= minusone;
+    }
+    return Coord(pointX, pointY);
+}
+
+/* **************** Static polymorphysm **************** */
+class GeoLine{
+    public:
+        Coord coords;
+        GeoLine(float px, float py) : coords(px, py){}
+        void draw();
+        Coord center_of_gravity();
+        ~GeoLine(){}
+};
+
+void GeoLine::draw(){
+    std::cout << "Line " << " point x: " << coords.pointX << " point y: " << coords.pointY << '\n';
+}
+
+Coord GeoLine::center_of_gravity(){
+    return Coord(coords.pointX, coords.pointY);
+}
+
+class GeoCircle{
+    public:
+        Coord coords;
+        GeoCircle(float px, float py) : coords(px, py){}
+        void draw();
+        Coord center_of_gravity();
+        ~GeoCircle(){}
+};
+
+void GeoCircle::draw(){
+    std::cout << "Circle " << " point x: " << coords.pointX << " point y: " << coords.pointY << '\n';
+}
+
+Coord GeoCircle::center_of_gravity(){
+    return Coord(coords.pointX, coords.pointY);
+}
+
+template<typename GeoObj>
+void MyDraw(GeoObj const& obj){
+    obj.draw();
+}
+
+template<typename Obj1, typename Obj2>
+Coord distance(Obj1& o1, Obj2& o2){
+    Coord c = o1.center_of_gravity() - o2.center_of_gravity();
+    return c.abs();
+}
+
+template<typename GeoObj>
+void drawElems(std::vector<GeoObj*> const& vec){
+    for(std::size_t i = 0; i < vec.size(); ++i){
+        vec[i].draw();
+    }
+}
+
+/* **************************************************** */
 
 int 
 main()
