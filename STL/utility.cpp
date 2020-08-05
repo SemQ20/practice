@@ -7,13 +7,13 @@
 
 /* create overload operator for view result of std::tuple */
 template<typename ...T>
-constexpr std::ostream &operator<<(std::ostream &os, std::tuple<T...> &_tuple) noexcept { //compile time, not trow exceptions
+constexpr std::ostream& operator<<(std::ostream &os, std::tuple<T...> &_tuple) noexcept { //compile time, not trow exceptions
     return os << std::get<0>(_tuple) <<", "<< std::get<1>(_tuple) <<", "<< std::get<2>(_tuple) <<'\n';
 } 
 
 /* create overload operator for view result of std::pair */
 template<typename ...T>
-constexpr std::ostream &operator<<(std::ostream &os, std::pair<T...> &_pair) noexcept { //compile time, not trow exceptions
+constexpr std::ostream& operator<<(std::ostream &os, std::pair<T...> &_pair) noexcept { //compile time, not trow exceptions
     return os << _pair.first << ", "<< _pair.second << '\n';
 }
 

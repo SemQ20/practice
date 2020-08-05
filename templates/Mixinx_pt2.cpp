@@ -26,7 +26,6 @@ struct Label{
     std::string name;
 };
 
-/* //TODO :for template functions? */
 template<typename F, typename... Types>
 auto func(F f, Types... values){
     return f(Types(values)...);

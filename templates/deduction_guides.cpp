@@ -2,7 +2,15 @@
 #include <type_traits>
 
 template<typename T1, typename T2>
-auto _add(T1 x, T2 y) -> decltype(x+y){
+struct PlusResultT{
+    using Type = decltype(std::declval<T1>() + std::declval<T2>());
+};
+
+template<typename T1, typename T2>
+using PlusResult = typename PlusResultT<T1, T2>::Type;
+
+template<typename T1, typename T2>
+PlusResult<T1,T2> _add(T1 x, T2 y) {
     return x+y;
 }
 

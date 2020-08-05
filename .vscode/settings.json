@@ -82,6 +82,9 @@
         "condition_variable": "cpp",
         "future": "cpp",
         "mutex": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "cfenv": "cpp"
     }
 }
