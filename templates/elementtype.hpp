@@ -48,17 +48,49 @@ ElementType<T> sumElement(T const& arr){
 }
 
 
-template<typename T>
-struct isDefaultConstructibleT
-{
+/* template<typename T>
+struct isDefaultConstructibleT{
     private:
-        template<typename U, typename = decltype(U())>
+        template<typename U, 
+                 typename = decltype(U())>
         static char test(void*);
 
         template<typename>
         static long test(...);
     public:
         static constexpr bool value = std::is_same_v<decltype(test<T>(nullptr)), char>;
+}; */
+
+template<typename T>
+struct isDefaultConstructibleHelper{
+    private:
+        template<typename U, 
+                 typename = decltype(U())>
+
+        static std::true_type
+        test(void*);
+
+        template<typename>
+        static std::false_type
+        test(...);
+
+    public:
+        /* Type is compile time measured type(true_type or false_type)
+           * true_type and false type includes static constexpr fields
+           * Type takes a user defined type of true_type/false_type and included fields */
+        using Type = decltype(test<T>(nullptr));
 };
+
+
+template<typename T>
+struct isDefaultConstructibleT : isDefaultConstructibleHelper<T>::Type{};
+
+template<typename...> using VoidT = void;
+
+template<typename, typename = VoidT<>>
+struct isDefaultConstructibleT1 : std::false_type{};
+
+template<typename T>
+struct isDefaultConstructibleT1<T, VoidT<decltype(T())>> : std::true_type{};
 
 #endif

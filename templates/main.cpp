@@ -2,7 +2,7 @@
 
 struct S
 {
-    S();
+    S() = delete;
 };
 
 
@@ -21,7 +21,9 @@ main()
     /* auto sum = sumElement(ivec);
     std::cout << sum << '\n'; */
 
-    std::boolalpha(std::cout);
-    std::cout << isDefaultConstructibleT<S>::value << '\n';    
+    /* std::boolalpha(std::cout);
+    std::cout << isDefaultConstructibleT1<S>::value << '\n'; */
+    
+    
     return 0;
 }
