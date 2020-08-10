@@ -3,7 +3,6 @@
 #include <vector>
 
 int 
-main()
-{
+main(){
     
 }
