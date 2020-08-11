@@ -2,7 +2,9 @@
 
 struct S
 {
-    S(){};
+    S() = delete;
+    S(int p){};
+    static const int first = 1;
 };
 
 
@@ -10,6 +12,7 @@ int
 main()
 {
     std::pair<int, int> p1{10,15};
+    S s(10);
     /* BigInt arr[] = {12ll, 23ll, 24ll, 12ll, 28ll, 48ll};
     auto sum = accum(arr, arr + (sizeof(arr)/sizeof(*arr)));
     auto sum1 = accum1(arr, arr + (sizeof(arr)/sizeof(*arr)));
@@ -23,11 +26,12 @@ main()
     std::cout << sum << '\n'; */
 
     std::boolalpha(std::cout);
-    /* std::cout << isDefaultConstructibleT1<S>::value << '\n'; */
-    S s;
+
+    bool check = isDefaultConstructibleT(s);
     
     std::cout << isDefaultConstructible(type<int>) << '\n';
-    std::cout << has_field_first(s) << '\n';
+    std::cout << check << '\n';
+    //std::cout << has_field_first(s) << '\n';
     std::cout << has_field_first(p1) << '\n';
     return 0;
 }

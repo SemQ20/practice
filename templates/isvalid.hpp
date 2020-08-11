@@ -38,6 +38,12 @@ constexpr auto hasfirst =
 constexpr auto isDefaultConstructible =
     isValid([](auto x) -> decltype((void)decltype(valueT(x))()){});
 
+
+template<typename T>
+constexpr auto isDefaultConstructibleT(T type_t){
+    return isDefaultConstructible(type<T>);
+}
+
 template<typename T>
 bool has_field_first(T pair){
    return hasfirst(type<T>);
