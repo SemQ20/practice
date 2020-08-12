@@ -66,7 +66,6 @@ struct isDefaultConstructibleHelper{
     private:
         template<typename U, 
                  typename = decltype(U())>
-
         static std::true_type
         test(void*);
 

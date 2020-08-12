@@ -25,6 +25,7 @@ constexpr auto type = TypeT<T> {};
 template<typename T>
 T valueT(TypeT<T>);
 
+/* only in C++17 */
 inline constexpr auto isValid = [](auto f){  
     return [](auto&&... args){
         return decltype(isValidImpl<decltype(f),
@@ -40,7 +41,7 @@ constexpr auto isDefaultConstructible =
 
 
 template<typename T>
-constexpr auto isDefaultConstructibleT(T type_t){
+auto isDefaultConstructibleT(T type_t){
     return isDefaultConstructible(type<T>);
 }
 

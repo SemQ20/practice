@@ -85,6 +85,7 @@
         "queue": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "cfenv": "cpp"
+        "cfenv": "cpp",
+        "qmovie": "cpp"
     }
 }
