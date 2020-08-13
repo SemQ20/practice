@@ -31,7 +31,7 @@ auto once = [](auto binary){
 auto binaryc = [](auto binary){
     return [=](auto x, auto y, auto callbk){
         return callbk(binary(x, y));
-    }
+    };
 };
 
 auto unit = [](auto x){
