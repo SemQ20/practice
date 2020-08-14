@@ -7,7 +7,7 @@
 #include <exception>
 
 std::function<int(int,int)> rlambda(){
-        return [](int x, int y){return x*y;};
+        return [](int x, int y){return x * y;};
     };
 
 
@@ -41,7 +41,7 @@ auto unit = [](auto x){
 auto stringify = [](auto x){
     std::stringstream ss;
     ss << x;
-    return unit(ss.str);
+    return unit(ss.str());
 };
 
 auto bind = [](auto u){
@@ -49,17 +49,5 @@ auto bind = [](auto u){
         return callback(u());
     };
 };
-
-/* std::cout << "Left Identify"
-          << stringify(15)()
-          << "=="
-          << bind(unit(15))(stringify)()
-          << '\n';
-
-std::cout << "Right Identify"
-          << stringify(5)()
-          << "=="
-          << bind(stringify(5))(unit)()
-          << '\n'; */
 
 #endif
