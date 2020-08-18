@@ -27,7 +27,7 @@ template<bool COND,
 using IfThenElseT = typename
                     IfThenElse<COND, trueType, falseType>::Type;
 
-template<auto N>
+/* template<auto N>
 struct SmallesIntT{
     using Type =
         typename IfThenElseT<N <= std::numeric_limits<char>::max(), char,
@@ -40,7 +40,7 @@ struct SmallesIntT{
                  >::Type
                  >::Type
                  >::Type;
-};
+}; */
 
 template<typename T>
 struct Unsigned{

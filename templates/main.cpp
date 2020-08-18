@@ -1,11 +1,15 @@
-#include "ifthenelse.hpp"
+#include "isnothrowmoveconstructible.hpp"
+#include <typeinfo>
+
+struct S{
+    S(S&& obj) noexcept {}
+    int foo(){}
+};
 
 int
 main()
 {
-    int a = 10;
-    UnsignedT<decltype(a)>::Type b;
     std::boolalpha(std::cout);
-    std::cout << std::is_unsigned_v<decltype(b)> << '\n';
+    std::cout << IsClassT<S>::value << '\n';
     return 0;
 }
