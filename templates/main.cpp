@@ -1,5 +1,5 @@
 #include "isnothrowmoveconstructible.hpp"
-#include <typeinfo>
+#include <iostream>
 
 struct S{
     S(S&& obj) noexcept {}
