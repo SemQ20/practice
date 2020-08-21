@@ -3,8 +3,6 @@
 #ifndef T_CLASS
 #define T_CLASS
 #include <string>
-#include <cstdlib>
-#include <cstring>
 
 class TClass {
 public:
