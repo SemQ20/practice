@@ -1,6 +1,5 @@
 #ifndef ISCONVERTIBLE_HPP
 #define ISCONVERTIBLE_HPP
-#include <iostream>
 #include <type_traits>  // for true_type and false_type
 #include <utility>      // for declval
 

@@ -1,6 +1,5 @@
 #ifndef ELEMENTTYPE_HPP
 #define ELEMENTTYPE_HPP
-#include <iostream>
 #include <vector>
 #include <list>
 #include <typeinfo>

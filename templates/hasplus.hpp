@@ -1,7 +1,6 @@
 #ifndef HASPLUS_HPP
 #define HASPLUS_HPP
 
-#include <iostream>
 #include <utility>
 #include <type_traits>
 

@@ -2,7 +2,6 @@
 #define HASSIZETYPE_HPP
 
 #include "isvalid.hpp"
-#include <iostream>
 #include <type_traits>
 #include <utility>
 
