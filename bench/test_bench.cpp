@@ -1,6 +1,7 @@
 #include <string>
 #include <benchmark/benchmark.h>
 
+
 /* If using CMake, it is recommended to link against the project-provided benchmark::benchmark 
   * and benchmark::benchmark_main targets using target_link_libraries. 
   * It is possible to use find_package to import an installed version of the library.
@@ -32,5 +33,5 @@ BENCHMARK(BM_StringCopy);
 BENCHMARK_MAIN();
 
 /* for compile: 
- clang++ test_bench.cpp -std=c++17 -isystem                 \
+ clang++ test_bench.cpp -std=c++17 -isystem                 
  benchmark/include -Lbenchmark/build/src -lbenchmark -lpthread */
