@@ -1,5 +1,6 @@
 #ifndef NALGORITHSMS_HPP
 #define NALGORITHSMS_HPP
+
 #include <vector>
 #include <array>
 #include <utility>

@@ -118,6 +118,23 @@ void drawElems(std::vector<GeoObj*> const& vec){
     }
 }
 
+/* virtual inheritance: */
+struct A
+{
+    void foo() { std::cout << "is class A" << '\n';}
+};
+
+struct B : public virtual A {};
+struct C : public virtual A {};
+
+struct D : public B, public C
+{
+    void bar()
+    {
+        foo(); // not ambiguous A::foo one object A in object D OK
+    }
+};
+
 /* ******************************************************************* */
 
 int main()
@@ -125,6 +142,9 @@ int main()
     /* Derived dr;
     auto ptr = std::make_shared<Derived>();
     print_base(ptr.get()); */
+    D d;
+    d.bar(); d.foo(); /* demostrates how to virtual inheritance works */
+
     Circle cr(-5.5f, -6.7f);
     Line ln(3.0f, 5.7f);
     std::vector<GeoObj*> vec{&cr,&ln};
