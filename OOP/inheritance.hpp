@@ -1,5 +1,7 @@
+#ifndef INHERITANCE_HPP
+#define INHERITANCE_HPP
+
 #include <iostream>
-#include <memory>
 #include <vector>
 
 class Base{
@@ -21,6 +23,15 @@ public:
     }
 };
 
+
+/* Use:  
+    Derived dr;
+* with shared_ptr:
+    auto ptr = std::make_shared<Derived>();
+* with unique_ptr:
+    auto ptr = std::make_unique<Derived>();
+* use this function:
+    print_base(ptr.get()); */
 void print_base(Base *p){
     p->do_anything();
 }
@@ -54,7 +65,6 @@ Coord Coord::abs(){
         pointX *= minusone, pointY;
         pointX, pointY *= minusone;
     }
-
     return *this;
 }
 
@@ -100,7 +110,7 @@ Coord Line::center_of_gravity() const{
 }
 
 void Line::draw() const{
-    std::cout << "Line " << " point x: " << coords.pointX << " point y: " << coords.pointY << '\n';
+    std::cout << "Line " << " point x: " << coords.pointX << "," << " point y: " << coords.pointY << '\n';
 }
 
 void myDraw(GeoObj const &go){
@@ -112,6 +122,9 @@ Coord distance(GeoObj const& t1, GeoObj const& t2){
     return c.abs();
 }
 
+/*  Use:
+    std::vector<GeoObj*> vec{&cr,&ln};
+    drawElems(vec); */
 void drawElems(std::vector<GeoObj*> const& vec){
     for(std::size_t i = 0; i < vec.size(); ++i){
         vec[i]->draw();
@@ -119,6 +132,9 @@ void drawElems(std::vector<GeoObj*> const& vec){
 }
 
 /* virtual inheritance: */
+/*  Use:
+    D d;
+    d.bar(); d.foo(); */
 struct A
 {
     void foo() { std::cout << "is class A" << '\n';}
@@ -135,21 +151,4 @@ struct D : public B, public C
     }
 };
 
-/* ******************************************************************* */
-
-int main()
-{
-    /* Derived dr;
-    auto ptr = std::make_shared<Derived>();
-    print_base(ptr.get()); */
-    D d;
-    d.bar(); d.foo(); /* demostrates how to virtual inheritance works */
-
-    Circle cr(-5.5f, -6.7f);
-    Line ln(3.0f, 5.7f);
-    std::vector<GeoObj*> vec{&cr,&ln};
-    cr.coords = distance(cr,ln);
-    std::cout << "distance: "<< cr.coords.pointX << ", "<< cr.coords.pointY << '\n';
-    drawElems(vec);
-    return 0;
-}
+#endif
