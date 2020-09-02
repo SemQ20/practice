@@ -63,7 +63,7 @@ class IteratorFacade{
 
 };
 
-/* Example: class uses CRTP for facade */
+/* Example: class for uses CRTP for facade trought ListNodeIterator*/
 
 template<typename T>
 class ListNode {
