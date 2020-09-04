@@ -9,6 +9,11 @@ template<typename Derived, typename Value, typename Category,
          typename Reference = Value&,
          typename Distance = std::ptrdiff_t>
 class IteratorFacade{
+
+    Derived& asDerived() {
+        return static_cast<Derived&>(*this);
+    }
+
     public:
         using value_type = typename std::remove_const_t<Value>;
         using reference = Reference;
@@ -16,9 +21,6 @@ class IteratorFacade{
         using different_type = Distance;
         using iterator_category = Category;
 
-    Derived& asDerived() {
-        return static_cast<Derived&>(*this);
-    }
         /* interface of input iterator */
     reference const operator*() {
         return asDerived().dereference();
@@ -63,6 +65,7 @@ class IteratorFacade{
 
 };
 
+
 /* Example: class for uses CRTP for facade trought ListNodeIterator*/
 
 template<typename T>
@@ -81,12 +84,18 @@ class ListNode {
     ptr->value = 10;
     ListNodeIterator iter(ptr);
     std::cout << *iter << '\n'; */
-
+/* CRTP in action: */
 template<typename T>
 class ListNodeIterator 
       : public IteratorFacade<ListNodeIterator<T>, T, std::forward_iterator_tag>{
+
+    /* for access of private section class ListNodeIterator */
+    template<typename Derived, typename Value, typename Category,
+             typename Reference, typename Distance>
+    friend class IteratorFacade;
+
     ListNode<T>* current = nullptr;
-public:
+
     T& dereference(){
         return current->value;
     }
@@ -99,7 +108,11 @@ public:
         return current == other.current;
     }
 
+public:
+    
     ListNodeIterator(ListNode<T>* current = nullptr) : current(current){}
 };
+
+
 
 #endif
