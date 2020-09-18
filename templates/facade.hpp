@@ -65,7 +65,6 @@ class IteratorFacade{
 
 };
 
-
 /* Example: class for uses CRTP for facade trought ListNodeIterator*/
 
 template<typename T>
@@ -89,7 +88,7 @@ template<typename T>
 class ListNodeIterator 
       : public IteratorFacade<ListNodeIterator<T>, T, std::forward_iterator_tag>{
 
-    /* for access of private section class ListNodeIterator */
+    /* for access to private section class ListNodeIterator */
     template<typename Derived, typename Value, typename Category,
              typename Reference, typename Distance>
     friend class IteratorFacade;
