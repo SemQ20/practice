@@ -4,6 +4,41 @@
 
 int main()
 {
+    /* std::vector<std::vector<int>> ivec2d = {
+                                               {1, 2, 3}, 
+                                               {4, 5, 6}
+                                               };
+    std::cout << ivec2d[0][0] << '\n'; // out: 1
+    std::cout << ivec2d[1][1] << '\n'; // out: 5 */
+
+    std::vector<std::vector<int>> ivec2d;
+    ivec2d.push_back(std::vector<int>());
+    ivec2d.push_back(std::vector<int>());
+    ivec2d[0].resize(1);
+    ivec2d[1].resize(1);
+    
+    ivec2d[0][0] = 35;
+    ivec2d[0][1] = 15;
+    ivec2d[0][2] = 45;
+    ivec2d[0][3] = 55;
+    
+    ivec2d[1][0] = 65;
+    ivec2d[1][1] = 75;
+    ivec2d[1][2] = 85;
+    ivec2d[1][3] = 95;
+    
+    std::cout << ivec2d[0][0] << '\n';
+    std::cout << ivec2d[0][1] << '\n';
+    std::cout << ivec2d[0][2] << '\n';
+    std::cout << ivec2d[0][3] << '\n';
+    
+    std::cout << ivec2d[1][0] << '\n';
+    std::cout << ivec2d[1][1] << '\n';
+    std::cout << ivec2d[1][2] << '\n';
+    std::cout << ivec2d[1][3] << '\n';
+
+    //std::cout << "ivec2d[0][0] = " << ivec2d[1][0] << '\n';
+
     /* uniform initialization */
     std::vector<int> vec{1,3,4,5,6,7,8,9};
     std::vector<float> fvec; // alternative

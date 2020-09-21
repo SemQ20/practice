@@ -2,6 +2,7 @@
 #define MIXINS_V2
 
 #include <iostream>
+#include <memory>
 
 template<typename... Mixins>
 class Point : Mixins... {
@@ -24,6 +25,15 @@ class Color{
 };
 using MyPoint = Point<Label, Color>;
 
+/* Parameterized virtuality 
+ Use: 
+    std::unique_ptr<Base<NotVirtual>> p1(new Derived<NotVirtual>);
+    auto p1 = std::make_unique<Base<NotVirtual>>();
+    p1.get()->foo();
+    std::unique_ptr<Base<Virtual>> p2(new Derived<Virtual>);
+    p2.get()->foo();
+*/
+
 class NotVirtual{
 };
 
@@ -34,10 +44,12 @@ class Virtual{
 
 template<typename... Mixins>
 class Base : public Mixins...{
+    
     public:
         void foo(){
             std::cout << "Base::foo()" << '\n';
         }
+    ~Base(){std::cout << "Call Base class destructor" << '\n';}
 };
 
 template<typename... Mixins>
@@ -46,6 +58,7 @@ class Derived : public Base<Mixins...>{
         void foo(){
             std::cout << "Derived::foo()" << '\n';
         }
+    //~Derived(){std::cout << "Call Derived class destructor" << '\n';}
 };
 
 #endif
