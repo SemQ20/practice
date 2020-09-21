@@ -19,6 +19,6 @@ float set_precision_float(float x, int base){
 int 
 main(){
     auto c = set_precision_float(5.4345334f, 2);
-    std::cout << c << '\n';
+    std::cout << c << '\n'; 
     return 0;
 }
