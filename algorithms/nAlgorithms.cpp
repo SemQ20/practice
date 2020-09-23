@@ -115,3 +115,66 @@ std::vector<int> fillVector_2_to_n(std::vector<int>& vector, int number){
     return vector;
 }
 
+/* measure fibonacci number */
+constexpr int fib_binet(int i){
+
+    #if __GNUC__ > 9
+        constexpr const auto sqrt_5 = std::sqrt(5);
+    #else
+        const auto sqrt_5 = std::sqrt(5);
+    #endif
+
+    if(i == 0) return 0;
+    if(i == 1) return 1;
+    return static_cast<int>((std::pow(1 + sqrt_5, i) - std::pow(1 - sqrt_5, i))/(std::pow(2,i) * sqrt_5));
+}
+
+uint32 getWholePartOfNum(float number){
+    std::string tmp = std::to_string(number);
+    std::string result;
+    uint32 ires;
+    std::size_t index = 0;
+    for(std::size_t i = 0; i != tmp.size(); ++i){
+        if(index != 0){
+            result += tmp[i];
+        }
+        if(tmp[i] == '.'){
+            index = i;
+        }
+    }
+    return ires = atoi(result.c_str());
+}
+
+uint32 hexToDecimal(const char* number){
+    char* buf;
+    unsigned int result = strtol(number, &buf, 16);
+    return result;
+}
+
+std::string helperFunctionForHex(uint32 decimal){
+    uint32 res = decimal - 10;
+    std::string result = "";
+    result = result + HEX_BUF[res];
+    return result;
+}
+
+std::string decimalToHex(uint32 decimal){
+    uint32 system = 16;
+    uint32 tmp = decimal;
+    uint32 mod = 0;
+    std::string result;
+
+    while(tmp >= system){
+        mod = tmp % system;
+        tmp = tmp / system;
+        if(mod >= 10){
+            result += helperFunctionForHex(mod);
+        }else{
+            result += std::to_string(mod);
+        }
+    }
+    result += std::to_string(tmp);
+    result += "x0";
+    result = reverseString(result);
+    return result;
+}

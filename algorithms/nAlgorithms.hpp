@@ -6,6 +6,12 @@
 #include <utility>
 #include <cmath>
 #include <algorithm>
+#include "strAlgorithms.hpp"
+
+const std::string HEX_BUF = "ABCDEF";
+
+using UL = unsigned long;
+using uint32 = unsigned int; // cross-platform style because uint32_t not defined in windows
 
 std::pair<std::vector<int>, int> sieveEratosphene(int number);
 std::pair<std::vector<int>, int> sieveEratosphene_v1(int number);
@@ -13,14 +19,11 @@ bool check_isWholeNumber(int const& value);
 int gcd(int a, int b);
 std::pair<std::vector<int> , int> factorization(int number);
 std::vector<int> fillVector_2_to_n(std::vector<int>& vector, int number);
-
-
-constexpr int fib_binet(int i){
-    constexpr auto sqrt_5 = std::sqrt(5);
-    if(i == 0) return 0;
-    if(i == 1) return 1;
-    return static_cast<int>((std::pow(1 + sqrt_5, i) - std::pow(1 - sqrt_5, i))/(std::pow(2,i) * sqrt_5));
-}
+uint32 getWholePartOfNum(float number);
+uint32 hexToDecimal(const char* number);
+constexpr int fib_binet(int i);
+std::string helperFunctionForHex(uint32 decimal);
+std::string decimalToHex(uint32 decimal);
 
 template<int N, std::size_t... Idx>
 constexpr std::array<bool, N + 1> eratospheneSieve_impl(std::index_sequence<Idx...>) noexcept{
@@ -40,5 +43,6 @@ template<int N, typename Idx = std::make_index_sequence<N+1>>
 constexpr std::array<bool, N + 1> eratospheneSieve() noexcept{
     return eratospheneSieve_impl<N>(Idx{});
 }
+
 
 #endif

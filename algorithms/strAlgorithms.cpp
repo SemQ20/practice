@@ -30,7 +30,7 @@ std::string convStringtoLowerAndDelPunct(std::string str){
     return str1;
 }
 
-std::string reverseString(std::string str){
+std::string reverseString(std::string& str){
     std::string tmp = convStringtoLowerAndDelPunct(str);
     std::string rstr;
     for(auto it = tmp.rbegin(); it <= tmp.rend()-1; it++){

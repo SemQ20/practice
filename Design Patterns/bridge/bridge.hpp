@@ -14,6 +14,7 @@ class IFunctorBridge{
         virtual bool equals(IFunctorBridge const* fb) const = 0;
 };
 
+/* primary template class */
 template<typename Signature>
 class FunctionPtr;
 
@@ -41,6 +42,7 @@ class SpecificFunctorBridge : public IFunctorBridge<R, Args...>{
         }
 };
 
+/* partional specialization */
 template<typename R, typename... Args>
 class FunctionPtr<R(Args...)>{
     IFunctorBridge<R, Args...>* bridge;
