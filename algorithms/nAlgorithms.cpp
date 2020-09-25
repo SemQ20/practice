@@ -173,7 +173,11 @@ std::string decimalToHex(uint32 decimal){
             result += std::to_string(mod);
         }
     }
-    result += std::to_string(tmp);
+    if(tmp >= 10){
+            result += helperFunctionForHex(tmp);
+        }else{
+            result += std::to_string(tmp);
+        }
     result += "x0";
     result = reverseString(result);
     return result;
