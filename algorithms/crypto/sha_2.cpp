@@ -21,7 +21,7 @@ const uint32_t SHA256::k[64] =
                              0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
                              0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
 
-void SHA256::binary_repres(){
+void SHA256::binary_data_repres(){
     /* Binary representation message */
     for(std::size_t i = 0; i <= data_buffer.size() + 1;){
         if((data_buffer.size() +1) - i >= 4){
@@ -82,6 +82,7 @@ void SHA256::transform(){
     std::bitset<32> tmp2;
     /* 
         * need a create massive buffer to all logic with bytes 
+          - 
         * need to create tmp buffer
         * realize algorithm logic
     */
@@ -90,7 +91,7 @@ void SHA256::transform(){
 std::string SHA256::sha256(std::string message) {
     data_buffer = std::move(message);
     SHA256::init();
-    SHA256::binary_repres();
+    SHA256::binary_data_repres();
     SHA256::fill_data_blocks();
     return "";
 }

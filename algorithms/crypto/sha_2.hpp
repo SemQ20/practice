@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <bitset>
+#include <bit>
 #include <cmath>
 
 class SHA256
@@ -23,10 +24,10 @@ class SHA256
     vector32bit               sha256buf;
 public:
 
-    std::string sha256          (std::string message);
-    void        init            ();
-    void        binary_repres   ();
-    void        fill_data_blocks();
-    void        transform       ();
+    std::string sha256               (std::string message);
+    void        init                 ();
+    void        binary_data_repres   ();
+    void        fill_data_blocks     ();
+    void        transform            ();
 };
 #endif
