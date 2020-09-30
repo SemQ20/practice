@@ -35,6 +35,5 @@ public:
     void        fill_data_blocks     ();
     void        transform            ();
     void        move_data_to_temp_buf(std::size_t index);
-    void        hash_compute         ();
 };
 #endif

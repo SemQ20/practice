@@ -93,17 +93,17 @@ void SHA256::transform(){
         SHA256::move_data_to_temp_buf(start_index);
         /* generate 48 words to 64: */
         for(std::size_t i = 16; i <= 63; ++i){
-            tmp  = (std::__rotr(w[i - 15].to_ullong(), 7)) xor (std::__rotr(w[i - 15].to_ullong(), 18)) xor (w[i - 15].to_ullong() >> 3);
-            tmp1 = (std::__rotr(w[i - 2].to_ullong(), 17)) xor (std::__rotr(w[i - 2].to_ullong(), 19))  xor (w[i - 2].to_ullong()  >> 10);
+            tmp  = (std::__rotr(w[i - 15].to_ullong(), 7)) ^ (std::__rotr(w[i - 15].to_ullong(), 18)) ^ (w[i - 15].to_ullong() >> 3);
+            tmp1 = (std::__rotr(w[i - 2].to_ullong(), 17)) ^ (std::__rotr(w[i - 2].to_ullong(), 19))  ^ (w[i - 2].to_ullong()  >> 10);
             w.push_back(w[i - 16].to_ullong() + tmp.to_ullong() + w[i-7].to_ullong() + tmp1.to_ullong());
         }
         
         for(std::size_t i = 0; i <= 63; ++i){
-            sigma0 = (std::__rotr(h_v[0].to_ullong(), 2)) xor (std::__rotr(h_v[0].to_ullong(), 13)) xor (std::__rotr(h_v[0].to_ullong(), 22));
-            Ma     = (h_v[0].to_ullong() and h_v[1].to_ullong()) xor (h_v[0].to_ullong() and h_v[2].to_ullong()) xor (h_v[1].to_ullong() and h_v[2].to_ullong());
+            sigma0 = (std::__rotr(h_v[0].to_ullong(), 2)) ^ (std::__rotr(h_v[0].to_ullong(), 13)) ^ (std::__rotr(h_v[0].to_ullong(), 22));
+            Ma     = (h_v[0].to_ullong() and h_v[1].to_ullong()) ^ (h_v[0].to_ullong() and h_v[2].to_ullong()) ^ (h_v[1].to_ullong() and h_v[2].to_ullong());
             t1     = sigma0.to_ullong() + Ma.to_ullong();
-            sigma1 = (std::__rotr(h_v[4].to_ullong(), 6)) xor (std::__rotr(h_v[4].to_ullong(), 11)) xor (std::__rotr(h_v[4].to_ullong(), 25));
-            Ch     = (h_v[4].to_ullong() and h_v[5].to_ullong()) xor ((not(h_v[4].to_ullong())) and h_v[6].to_ullong());
+            sigma1 = (std::__rotr(h_v[4].to_ullong(), 6)) ^ (std::__rotr(h_v[4].to_ullong(), 11)) ^ (std::__rotr(h_v[4].to_ullong(), 25));
+            Ch     = (h_v[4].to_ullong() and h_v[5].to_ullong()) ^ ((~(h_v[4].to_ullong())) and h_v[6].to_ullong());
             t      = h_v[7].to_ullong() + sigma1.to_ullong() + Ch.to_ullong() + k[i] + w[i].to_ullong();
 
             h_v[7] = h_v[6];
@@ -116,7 +116,10 @@ void SHA256::transform(){
             h_v[0] = t.to_ullong() + t1.to_ullong();
         }
     }
-        
+    for(std::size_t i = 0; i <= 7; ++i){
+        h_s[i] += h_v[i].to_ullong();
+        sha256_hash += decimalToHex(h_s[i]) + " ";
+    }    
 }
 
 void SHA256::move_data_to_temp_buf(std::size_t index){
@@ -128,12 +131,6 @@ void SHA256::move_data_to_temp_buf(std::size_t index){
     BLOCK_SIZE--;
 }
 
-void SHA256::hash_compute(){
-    for(std::size_t i = 0; i <= 7; ++i){
-        h_s[i] += h_v[i].to_ullong();
-        sha256_hash += decimalToHex(h_s[i]);
-    }
-}
 
 std::string SHA256::sha256(std::string message) {
     data_buffer = std::move(message);
@@ -141,6 +138,5 @@ std::string SHA256::sha256(std::string message) {
     SHA256::binary_data_repres();
     SHA256::fill_data_blocks();
     SHA256::transform();
-    SHA256::hash_compute();
     return sha256_hash;
 }
