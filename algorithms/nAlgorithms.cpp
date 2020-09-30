@@ -178,7 +178,7 @@ std::string decimalToHex(uint32 decimal){
         }else{
             result += std::to_string(tmp);
         }
-    result += "x0";
+    //result += "x0";
     result = reverseString(result);
     return result;
 }

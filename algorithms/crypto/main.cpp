@@ -4,6 +4,7 @@
 int main()
 {
     SHA256 sh;
-    sh.sha256("The quick brown fox jumps over the lazy dog");
+    std::cout << sh.sha256("grape") << '\n';
+    
     return 0;
 }
