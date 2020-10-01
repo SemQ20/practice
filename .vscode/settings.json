@@ -87,6 +87,7 @@
         "set": "cpp",
         "cfenv": "cpp",
         "strstream": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "climits": "cpp"
     }
 }

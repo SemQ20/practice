@@ -182,3 +182,11 @@ std::string decimalToHex(uint32 decimal){
     result = reverseString(result);
     return result;
 }
+
+uint32 rotr32(uint32 n, uint32 x){
+    return (n >> x) | ((n << 16 - x) & 0xFFFF);
+}
+
+uint32 rotl32(uint32 n, uint32 x){
+    return (n << x) | ((n >> 16 - x) & 0xFFFF);
+}

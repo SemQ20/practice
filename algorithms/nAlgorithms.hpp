@@ -24,6 +24,9 @@ uint32                            hexToDecimal        (const char* number);
 constexpr int                     fib_binet           (int i);
 std::string                       helperFunctionForHex(uint32 decimal);
 std::string                       decimalToHex        (uint32 decimal);
+uint32                            rotr32              (uint32 n, uint32 x);
+uint32                            rotl32              (uint32 n, uint32 x);
+
 
 template<int N, std::size_t... Idx>
 constexpr std::array<bool, N + 1> eratospheneSieve_impl(std::index_sequence<Idx...>) noexcept{

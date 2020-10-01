@@ -6,6 +6,8 @@
 #include <bitset>
 #include <bit>
 
+using uint32 = unsigned int;
+
 class SHA256
 {
     uint32_t                     h_s[8];
@@ -23,17 +25,17 @@ class SHA256
     std::size_t                  end_index   = 0;
     std::string                  data_buffer;
     std::string                  sha256_hash = "";
-    std::vector<std::bitset<32>> sha256buf;
-    std::vector<std::bitset<32>> h_v;
-    std::vector<std::bitset<32>> w;
+    std::vector<uint32> sha256buf;
+    std::vector<uint32> h_v;
+    std::vector<uint32> w;
 
 public:
 
-    std::string sha256               (std::string message);
-    void        init                 ();
-    void        binary_data_repres   ();
-    void        fill_data_blocks     ();
-    void        transform            ();
-    void        move_data_to_temp_buf(std::size_t index);
+    std::string     sha256               (std::string message);
+    void            init                 ();
+    void            binary_data_repres   ();
+    void            fill_data_blocks     ();
+    void            transform            ();
+    void            move_data_to_temp_buf(std::size_t index);
 };
 #endif
