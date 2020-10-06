@@ -1,24 +1,41 @@
 #include <iostream>
 #include <cmath>
 
-template<typename T>
-T sub(T a, T b){
-    return a - b;
+template<typename F>
+float RectangeRule(F f, float xmin, float xmax, int intervals){
+    float dx = (xmax - xmin) / intervals;
+    float total_area = 0;
+    float x = xmin;
+    for(float i = 0; i <= intervals; ++i * 0.01f){
+        total_area += dx * f(x);
+        x = x + dx;
+    }
+    return total_area;
 }
 
-/* base set precision for floating point value, point after zero
-   base = 1, 2, 3, 4 ... n */
-float set_precision_float(float x, int base){
-    if(base == 0){
-        return std::round(x);
+template<typename F>
+float TrapezoidRule(F f, float xmin, float xmax, int intervals){
+    float dx = (xmax - xmin) / intervals;
+    float total_area = 0;
+    float x = xmin;
+    for(int i = 0; i <= intervals; ++i){
+        total_area += dx * (f(x) + f(x + dx))/2;
+        x = x + dx;
     }
-    int precision = pow(10, base);
-    return std::round(x * precision)/precision;
+    return total_area;
+}
+
+float f (int x){
+    return sin(x);
 }
 
 int 
 main(){
-    auto c = set_precision_float(5.4345334f, 2);
-    std::cout << c << '\n'; 
+    auto res  = RectangeRule(f,0,5,10);
+    auto res1 = TrapezoidRule(f,0,5,20);
+  
+    std::cout << res << '\n';
+    std::cout << res1 << '\n';
+
     return 0;
 }
