@@ -1,41 +1,34 @@
 #include <iostream>
 #include <cmath>
+#include "algorithms/nAlgorithms.hpp"
 
-template<typename F>
-float RectangeRule(F f, float xmin, float xmax, int intervals){
-    float dx = (xmax - xmin) / intervals;
-    float total_area = 0;
-    float x = xmin;
-    for(float i = 0; i <= intervals; ++i * 0.01f){
-        total_area += dx * f(x);
-        x = x + dx;
+void search(std::vector<int>& vec, int k, int n){
+    if(k == n + 1){
+    }else{
+        vec.push_back(k);
+        search(vec,k + 1, n);
+        vec.pop_back();
+        search(vec,k + 1, n);
     }
-    return total_area;
-}
-
-template<typename F>
-float TrapezoidRule(F f, float xmin, float xmax, int intervals){
-    float dx = (xmax - xmin) / intervals;
-    float total_area = 0;
-    float x = xmin;
-    for(int i = 0; i <= intervals; ++i){
-        total_area += dx * (f(x) + f(x + dx))/2;
-        x = x + dx;
-    }
-    return total_area;
-}
-
-float f (int x){
-    return sin(x);
 }
 
 int 
 main(){
-    auto res  = RectangeRule(f,0,5,10);
-    auto res1 = TrapezoidRule(f,0,5,20);
-  
-    std::cout << res << '\n';
-    std::cout << res1 << '\n';
-
+    std::vector<uint64_t> ui64vec{2,3,1,4,5};
+    uint64_t n = 6;
+    uint64_t x = 1;
+    //uint64_t value = 0;
+    uint64_t result = 0;
+    
+    ui64vec.push_back(0);
+    std::sort(ui64vec.begin(), ui64vec.end());
+    for(std::size_t i = 1; i <= n; ++i){
+        if(ui64vec[i] == i){
+            ++x;
+        }else{
+            result = x;
+        }
+    }
+    std::cout << result << '\n';
     return 0;
 }

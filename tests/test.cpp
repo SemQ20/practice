@@ -3,7 +3,7 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_suite.hpp>
-#include "../t_class.hpp"
+#include "../OOP/t_class.hpp"
 #include <cmath>
 
 template<typename T>
