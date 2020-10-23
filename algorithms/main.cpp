@@ -8,35 +8,27 @@
 
 int main()
 {
-    std::string input = "jakdj ajndkjqw qjwknda askdjq";
+    std::string input = "hello world";
     const char* ch = input.c_str();
     std::vector<std::bitset<8>> vec8bit;
-    int64_t cs = 0x12345671FBC00045;
-    int16_t c16 = (cs & 0x0000FFFF00000000) >> 32;
-
-    std::cout << decimalToHex(c16) << '\n';
-    unsigned int mask4bit[] = { 0x000000FF, 
-                                0x0000FF00, 
-                                0x00FF0000, 
-                                0xFF000000 
-                              };
-    int byte = 8;
-    int b1 = ch[0] << (0    ) * mask4bit[0];
-    vec8bit.push_back(b1);
-    int b2 = ch[1] << (8    ) * mask4bit[1];
-    vec8bit.push_back(b2);
-    int b3 = ch[2] << (8 * 2) * mask4bit[2];
-    int b4 = ch[3] << (8 * 3) * mask4bit[3];
-    int c = (unsigned char) ch[0] << 24 | (unsigned char) ch[1] << 16 | (unsigned char) ch[2] << 8 |
-            (unsigned char) ch[3];
+    for(std::size_t i = 0; i <= input.size(); i++){
+      vec8bit.push_back(ch[i]);
+    }
+    std::bitset<8> b1;
+    std::bitset<8> b2;
+    std::bitset<8> b3;
+    b1 = vec8bit[0] | vec8bit[1] | vec8bit[2] | vec8bit[3];
+    b2 = vec8bit[4] | vec8bit[5] | vec8bit[6] | vec8bit[7];
+    b3 = vec8bit[9] | vec8bit[10] | vec8bit[11];
+    uint64_t t = vec8bit[0].to_ullong() << 24 | vec8bit[1].to_ullong() << 16 | 
+                 vec8bit[2].to_ullong() << 8  | vec8bit[3].to_ullong();
+    std::cout << t << '\n';
     std::cout << b1 << '\n';
     std::cout << b2 << '\n';
     std::cout << b3 << '\n';
-    std::cout << b4 << '\n';
-    std::cout << c << '\n';
-    std::cout << vec8bit[0].to_ullong() << '\n';
-    std::cout << vec8bit[1] << '\n';
-
+    std::cout << b1.to_ullong() << '\n';
+    std::cout << b2.to_ullong() << '\n';
+    std::cout << b3.to_ullong() << '\n';
     return 0;
 }
 

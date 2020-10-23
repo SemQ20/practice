@@ -77,8 +77,8 @@ int gcd(int& a, int& b){
 
 std::pair<std::vector<int> , int> factorization(int number){
     std::vector<int> multipliers;
-    uint mcount = 0; // count multiplers
-    uint y = 0;
+    uint32 mcount = 0; // count multiplers
+    uint32 y = 0;
     //uint tmp = number;
 
     if(check_isWholeNumber(number)){
