@@ -178,7 +178,11 @@ std::string decimalToHex(uint32 decimal){
         }else{
             result += std::to_string(tmp);
         }
-    result += "x0";
+    //result += "x0";
     result = reverseString(result);
     return result;
+}
+
+bool is_even_number(int value){
+    return ((value % 2 == 0)? true : false); 
 }

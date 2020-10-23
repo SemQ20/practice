@@ -8,7 +8,7 @@
             "name": "Linux",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/algorithms/a.out",
+            "program": "${workspaceFolder}/problems/Introductory Problems/a.out",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
