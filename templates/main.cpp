@@ -1,11 +1,16 @@
-#include "mixins_v2.hpp"
+#include <iostream>
+#include <utility>
+
+#define MYSTRUCT(name) struct name{ \
+    int i = 10;                     \
+};                                  \
+
+MYSTRUCT(A);
 
 int
 main()
 {
-    
-    std::boolalpha(std::cout);
-    
-    
+    A a;
+    std::cout << a.i << '\n';
     return 0;
 }

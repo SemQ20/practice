@@ -89,5 +89,6 @@
         "strstream": "cpp",
         "valarray": "cpp",
         "shared_mutex": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
